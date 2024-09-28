@@ -34,6 +34,8 @@
   retries: "{{ cifmw_cephadm_wait_install_retries }}"
   delay: "{{ cifmw_cephadm_wait_install_delay }}"
   until: task_result is success
+  environment: >-
+    ACCEPT_EULA='Y' if {{ cifmw_cephadm_ibm_license | default(false) }} else ''
 
 - name: Stat cephadm file
   ansible.builtin.stat:

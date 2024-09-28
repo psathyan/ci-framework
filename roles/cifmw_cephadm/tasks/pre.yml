@@ -29,6 +29,7 @@
     name: cephadm
     state: latest
     releasever: "{{ ansible_facts['distribution_major_version'] }}"
+  environment: "{{ cifmw_cephadm_ibm_license | default(omit) }}"
 
 - name: Stat cephadm file
   ansible.builtin.stat:

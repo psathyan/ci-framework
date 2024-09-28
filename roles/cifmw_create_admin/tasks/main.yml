@@ -17,9 +17,16 @@
 
 - name: Create user
   ansible.builtin.import_tasks: create_user.yml
+
 - name: Authorize user
   ansible.builtin.import_tasks: authorize_user.yml
+
 - name: Distribute keys
   when:
     - cifmw_admin_distribute_private_key | bool
   ansible.builtin.import_tasks: distribute_key_files.yml
+
+- name: IBM Ceph Storage
+  when:
+    - cifmw_create_admin_ibm_build | default(false) | bool
+  ansible.builtin.include_tasks: ibm_support.yml

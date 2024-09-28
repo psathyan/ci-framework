@@ -32,6 +32,9 @@ Requires an Ansible user who can become root to install Ceph server.
 The `ceph.yml` playbook defaults these parameters so that they do not
 need to be changed for a typical EDPM deployment.
 
+* `cifmw_cephadm_ibm_license` (dict) holding information about IBM
+  Storage Ceph license.
+
 * `cifmw_cephadm_default_container`: If this is value is `true`, then
   `cephadm bootstrap` is not passed the `--image` parameter and whatever
   default Ceph container defined inside of `cephadm` is used. Otherwise
